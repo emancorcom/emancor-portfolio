@@ -3,4 +3,4 @@ My Portfolio
 
 [Veiw site][def]
 
-[def]: https://emancor.com
+[def]: www.emancor.com
