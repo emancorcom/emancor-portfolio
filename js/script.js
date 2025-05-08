@@ -1,51 +1,111 @@
 // HERO IMAGE SCALE WIDTH ON SCROLL
 
-window.addEventListener('scroll', () => {
+function updateDivWidthOnScroll() {
   const scrollY = window.scrollY;
-  const newWidth = 0 + scrollY * 0.1112;
-  const div = document.getElementById('scalable-div');
+  const divs = document.querySelectorAll('.image-scale-container'); // Select all elements with the class
 
-  div.style.width = `${Math.min(newWidth, 100)}%`; // Set a maximum width of 500px
+  divs.forEach((div) => {
+    // Check window width to determine scaling factor and max width
+    if (window.innerWidth <= 1000) {
+      const newWidth = 0 + scrollY * 0.1112;
+      div.style.width = `${Math.min(newWidth, 100)}%`; // Set a maximum width of 100%
+    } else {
+      const newWidth = 0 + scrollY * 0.16;
+      div.style.width = `${Math.min(newWidth, 138)}vw`; // Set a maximum width of 138vw
+    }
+  });
+}
+
+window.addEventListener('scroll', updateDivWidthOnScroll);
+window.addEventListener('resize', updateDivWidthOnScroll);
+
+
+
+
+
+
+// IMAGE SCALE WIDTH ON SCROLL
+
+function scaleDivsOnScroll() {
+  const divs = document.querySelectorAll('.image-scale-container-2'); // Select all elements with the class
+
+  window.addEventListener('scroll', () => {
+    divs.forEach((div) => {
+      const rect = div.getBoundingClientRect();
+
+      // Calculate the offset for the individual element
+      const offset = 850;
+      const scrollY = Math.max(0, -rect.top + offset);
+
+      // Check window width to determine scaling factor and max width
+      if (window.innerWidth <= 1000) {
+        const newWidth = 0 + scrollY * 0.1112;
+        div.style.width = `${Math.min(newWidth, 100)}%`; // Set a maximum width of 100%
+      } else {
+        const newWidth = 0 + scrollY * 0.163;
+        div.style.width = `${Math.min(newWidth, 138)}vw`; // Set a maximum width of 138vw
+      }
+    });
+  });
+}
+
+scaleDivsOnScroll();
+
+window.addEventListener('scroll', updateDivWidthOnScroll);
+window.addEventListener('resize', updateDivWidthOnScroll);
+
+
+
+
+
+
+
+// HERO TEXT PULLER WIDTH ON SCROLL
+
+function updateTextPullerWidthOnScroll() {
+  const scrollY = window.scrollY;
+  const elements = document.querySelectorAll('.text-puller');
+
+  elements.forEach((element) => {
+    const newWidth = 100 - scrollY * 0.1112; // Shrink width with scroll position
+    element.style.width = `${Math.max(newWidth, 0)}%`; // Set a minimum width of 0%
+  });
+}
+
+window.addEventListener('scroll', updateTextPullerWidthOnScroll);
+window.addEventListener('resize', updateTextPullerWidthOnScroll);
+
+
+
+
+
+
+// INSTERSECTION OBSERVER
+const myobserver = new IntersectionObserver((entries) => {
+
+  // LOOP THROUGH ALL ENTRIES
+
+  entries.forEach((entry) => {
+
+    if (entry.isIntersecting) {
+      entry.target.setAttribute("data-viewstate", "active");
+    } else {
+      entry.target.setAttribute("data-viewstate", "innactive");
+    };
+
+  });
+
+});
+
+const mytargets = document.querySelectorAll('.observe-me');
+mytargets.forEach((el) => {
+  myobserver.observe(el)
+
 });
 
 
-// CONTENT IMAGE SCALE WIDTH ON SCROLL
-function scaleDivOnScroll(id) {
-  window.addEventListener('scroll', () => {
-    const div = document.getElementById(id);
-    const rect = div.getBoundingClientRect();
-
-    const offset = 900;
-    const scrollY = Math.max(0, -rect.top + offset);
-
-    const newWidth = 0 + scrollY * 0.117; // Scale width with scroll position
-    div.style.width = `${Math.min(newWidth, 100)}%`; // Set a maximum width of 100%
-
-  });
-}
-
-scaleDivOnScroll('scalable-div-1');
-scaleDivOnScroll('scalable-div-2');
-scaleDivOnScroll('scalable-div-3');
-scaleDivOnScroll('scalable-div-4');
 
 
 
-// CONTENT IMAGE SCALE WIDTH ON SCROLL
-function scaleDivOnScroll(id) {
-  window.addEventListener('scroll', () => {
-    const div = document.getElementById(id);
-    const rect = div.getBoundingClientRect();
 
-    const offset = 900;
-    const scrollY = Math.max(0, -rect.top + offset);
 
-    const newWidth = 0 + scrollY * 0.1525; // Scale width with scroll position
-    div.style.width = `${Math.min(newWidth, 100)}%`; // Set a maximum width of 100%
-
-  });
-}
-
-scaleDivOnScroll('scalable-small-div-1');
-scaleDivOnScroll('scalable-small-div-2');
-scaleDivOnScroll('scalable-small-div-3');

@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>emancor</title>
+  <title>Emanuel Correa's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="img/logo.webp">
   <meta charset="utf-8">
   <meta name="description" content="This is the NMA student website for Emmaneul Correa.">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,6 +11,12 @@
 
   <link rel="stylesheet" href="https://use.typekit.net/jos7mnv.css">
 
+  <script src="js/three.js"></script>
+  <script src="js/GLTFLoader.js"></script>
+  <script src="js/OrbitControls.js"></script>
+  <script src="js/EffectComposer.js"></script>
+  <script src="js/OutlinePass.js"></script>
+  <script src="js/RenderPass.js"></script>
 
 
 
@@ -19,94 +26,79 @@
 
 
 
+<div class="filtered"></div>
 
 
+<body>
 
-<body class="white">
-
-  <header class="site-header">
-    <div class="container">
+  <!-- <header class="site-header">
+    <div class="header-container">
       <div class="buttons logo-mark">
-        <a href="#hero" class="scroll button"><img src="img/EMANCOR-mark.svg" alt=""></a>
-      </div>
-      <div class="buttons">
-        <a href="#creations" class="scroll button black text-bright-white h3">
-          CREATIONS
+        <a href="#hero" class="scroll button">
+          <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 199.95">
+            <rect x="5" y="0" width="190" height="48" rx="24" ry="24" />
+            <path
+              d="M49.3,137.95h0c0,7.73,6.27,14,14,14h112.69c13.25,0,24,10.75,24,24h0c0,13.25-10.75,24-24,24H47.96c-26.49,0-47.96-21.47-47.96-47.96v-28.08c0-26.49,21.47-47.96,47.96-47.96h128.04c13.25,0,24,10.75,24,24h0c0,13.25-10.75,24-24,24H63.31c-7.73,0-14,6.27-14,14Z" />
+          </svg>
         </a>
-        <a href="#about" class="scroll button  black text-bright-white h3">
+      </div>
+
+      <div class="vertical-buttons">
+        <a href="#gallery" class="scroll button text-black h3">
+          GALLERY
+        </a>
+
+        <a href="#about" class="scroll button text-black h3">
           ABOUT
         </a>
       </div>
-    </div>
-  </header>
 
-  <section id="hero">
+    </div>
+  </header> -->
+
+  <section class="hero" id="hero">
+
     <div class="container single-height full-width">
-      <div class="float-above single-half-height container full-width infront">
+      <div class="canvas-height">
 
-        <div class="content-row full-width single-height-mobile contained sticky">
-          <div class="column statement">
-            <div class="statement-box">
-              <h1 class="text-center top-space-none animated-word column">
-                <span class="word Versatile text-center">Versatile</span>
-                <span class="word Graphic text-center">Graphic</span>
-                <span class="word Web text-center">Website</span>
-                <span class="word Web text-center">3D</span>
-              </h1>
-              <h1 class="text-center top-space-none animated-word column">
-                <span class="word2 Versatile text-center">Design</span>
-                <span class="word2 Graphic text-center">Designer</span>
-                <span class="word2 Web text-center">Developer</span>
-                <span class="word2 Web text-center">Modeler</span>
-              </h1>
-            </div>
+        <div class="three-wrapper"></div>
+      </div>
+
+      <div class="content-row full-width single-height contained top-space-none">
+        <div class="column align-left">
+        </div>
+
+        <div class="column align-right">
+          <div class="box contain-box ">
+            <h1 class="observe-me sans-serif bold text-bright-white">Emmanuel</h1>
+            <h1 class="observe-me sans-serif bold text-bright-white">Correa</h1>
+            <h1 class="observe-me sans-serif bold text-cyan">Let's Connect</h1>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container single-half-height full-width float-above inback" id="about">
-      <div class="content-row single-height full-width contained sticky">
-        <div class="column align-left top-space-none">
-          <div class="box portrait-box white">
-            <div class="bg-color-5 fill-box">
-              <img src="" alt="">
-            </div>
+    </div>
+  </section>
+  <section class="white" id="about">
+    <div class="container full-width infront centered" id="about">
+
+      <div class="content-row full-width contained bottom-space">
+        <div class="column align-left">
+          <div class="box contain-box ">
+            <h1 class="observe-me sans-serif bold">Honolulu-based</h1>
+            <h1 class="observe-me sans-serif bold">designer,</h1>
+            <h1 class="observe-me sans-serif bold">enjoy</h1>
+            <h1 class="observe-me sans-serif bold">the outdoors,</h1>
+            <h1 class="observe-me sans-serif bold">quality time</h1>
           </div>
         </div>
 
-        <div class="column align-right top-space-none">
-        </div>
-      </div>
-    </div>
-
-    <div class="container single-half-height full-width infront">
-      <div class="content-row single-height full-width contained">
-        <div class="column align-left top-space-none">
-        </div>
-
-        <div class="column align-right top-space-none">
-          <div class="box contain-box text-box">
-            <p class="initial-letter">My practice in conceptualization and the design process have helped me develop a
-              deliberate approach to design. I consistantly explore my creativity while expanding the expertise
-              necessary
-              to create impactful, thoughtful, and practical designs.
-            </p>
-            <div class="buttons">
-              <a href="" class="button left-button black text-bright-white h3">
-                RESUME
-              </a>
-              <a href="#creations" class="scroll button left-button black text-bright-white h3">
-                CREATIONS
-              </a>
-            </div>
-          </div>
-          <div class="box contain-box text-box">
-            <h1 class="text-center">About Me
-            </h1>
-            <p> I was born and raised in Honolulu, Hawaii, with Brazilian heritage.
+        <div class="column align-right align-base">
+          <div class="box contain-box ">
+            <p class="observe-me "> I am born and raised in Honolulu, Hawaii.
               Growing
-              up, I developed an early passion for art and an attention to detail, which led me to a fascination with
+              up, I developed an early passion for art and an attention to detail, which led me to a fascination
+              with
               product, graphic, and web design. When I’m not pushing my creative boundaries, you’ll find me
               outdoors—surfing, cycling, hiking, or taking a walk, and spending time with the people who matter most
               to
@@ -114,20 +106,122 @@
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <section id="creations">
-    <div class="container single-height full-width mobile-thumb">
-      <div class="content-row full-width single-height top-space-none contained reverse">
-        <div class="column align-right single-height top-space-none mobile-thumb">
-          <a href="leafruit/index.html" class="screen-fit black img-border" id="scalable-div-1">
-            <img class="full-width" src="img/leafruit.webp" alt="">
+  <section class="white" id="gallery">
+
+    <!-- <div class="side-bar">
+      <div class="text-verticle">
+        <h1 class="observe-me sans-serif bold text-center">GALLERY
+        </h1>
+      </div>
+    </div> -->
+
+    <div class="container full-width infront centered" id="about">
+
+      <div class="content-row full-width contained top-space-none">
+        <div class="column align-left">
+          <div class="box contain-box ">
+            <h1 class="observe-me sans-serif bold large-heading">GALLERY</h1>
+          </div>
+        </div>
+
+        <div class="column align-right align-base">
+          <div class="box contain-box ">
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container single-height full-width">
+        <a href="leafruit/index.html" class="thumbnail-hover">
+          <div class="hover-area"></div>
+          <div class="content-row full-width contained mobile-thumbs reverse scale-row">
+
+            <div class="image-scale-container-2">
+              <img class="full-width" src="img/leafruit.webp" alt="">
+            </div>
+
+            <div class="scale-column mobile-thumb-text">
+              <div>
+                <div class="text-pusher"></div>
+                <div class="text-container">
+                  <img src="img/leafruit-logo.svg" alt="Leafruit Logo" class="content-logo thumbnail observe-me">
+                </div>
+                <div class="text-pusher"></div>
+              </div>
+              <div>
+                <div class="text-pusher"></div>
+                <div class="text-container">
+                  <h3 class="text-center observe-me">Branding & Packaging</h3>
+                </div>
+                <div class="text-pusher"></div>
+              </div>
+            </div>
+
+          </div>
+        </a>
+      </div>
+
+      <div class="container single-height full-width">
+        <a href="terga/index.html" class="thumbnail-hover">
+          <div class="hover-area"></div>
+          <div class="content-row full-width contained mobile-thumbs reverse scale-row">
+
+            <div class="image-scale-container-2">
+              <img class="full-width" src="img/terga-1.webp" alt="">
+            </div>
+
+            <div class="scale-column mobile-thumb-text">
+              <div>
+                <div class="text-pusher"></div>
+                <div class="text-container">
+                  <img src="img/terga-logo.svg" alt="Terga Logo" class="content-logo thumbnail observe-me">
+                </div>
+                <div class="text-pusher"></div>
+              </div>
+              <div>
+                <div class="text-pusher"></div>
+                <div class="text-container">
+                  <h3 class="text-center observe-me">Branding & Packaging</h3>
+                </div>
+                <div class="text-pusher"></div>
+              </div>
+            </div>
+
+          </div>
+        </a>
+      </div>
+
+
+
+      <div class="container contained single-height full-width top-space-none content-row">
+        <div class="gallery-block">
+          <a href="surfnsea/index.html" class="thumbnail-hover">
+
+
+
+            <div class="screen-fit-small">
+              <img src="img/sns-tag.webp" alt="">
+            </div>
+
+
           </a>
         </div>
-        <div class="column align-left mobile-thumb-text">
-          <img src="img/leafruit-logo.svg" alt="Leafruit Logo" class="content-logo cs-thumbnail">
-          <h3 class="text-center">Branding & Packaging</h3>
+        <div class="gallery-block">
+          <a href="montecarlo/index.html" class="thumbnail-hover">
+
+
+
+            <div class="screen-fit-small">
+              <img src="img/terga-1.webp" alt="">
+            </div>
+
+
+          </a>
         </div>
       </div>
     </div>
@@ -136,33 +230,7 @@
   <section id="more">
     <div class="container single-height full-width">
       <div class="content-row full-width contained top-space-none more-content">
-        <div class="column single-height top-space-none">
-          <a href="leafruit/index.html" class="screen-fit black img-border half-height" id="scalable-small-div-1">
-            <img class="full-width" src="img/leafruit-illustration.webp" alt="">
-          </a>
-          <div class="box contain-box text-box">
-            <h2 class="text-center">Surf N Sea</h2>
-            <h3 class="text-center">Brand Identity and Packaging</h3>
-          </div>
-        </div>
-        <div class="column single-height top-space-none">
-          <a class="screen-fit black img-border half-height" id="scalable-small-div-2">
-            <img class="full-width" src="img/leafruit-illustration.webp" alt="">
-          </a>
-          <div class="box contain-box text-box">
-            <h2 class="text-center">Montecarlo</h2>
-            <h3 class="text-center">Brand Identity and Packaging</h3>
-          </div>
-        </div>
-        <div class="column single-height top-space-none">
-          <a class="screen-fit black img-border half-height" id="scalable-small-div-3">
-            <img class="full-width" src="img/leafruit-illustration.webp" alt="">
-          </a>
-          <div class="box contain-box text-box">
-            <h2 class="text-center">Leafruit</h2>
-            <h3 class="text-center">Brand Identity and Packaging</h3>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -172,7 +240,7 @@
     <div class="content-row full-width contained top-space-none">
 
       <div class="column">
-        <div class="box contain-box text-box text-bright-white">
+        <div class="box contain-box  text-bright-white">
           <h2 class="text-center sans-serif bold">EMANCOR</h2>
         </div>
       </div>
@@ -182,16 +250,19 @@
   </footer>
 
   <!-- SCROLL JS FILE-->
-  <script src="js/script.js"></script>
-
-  <!-- SCROLL JS FILE-->
   <script src="js/scroll.js"></script>
 
-  <!-- SCROLL JS FILE-->
+  <!-- HEADER JS FILE-->
   <script src="js/header.js"></script>
 
-  <!-- SCROLL JS FILE-->
+  <!-- TEXT-ANI JS FILE-->
   <script src="js/text-ani.js"></script>
+
+  <!-- THREE-MAIN JS FILE-->
+  <script src="js/three-main.js"></script>
+
+  <!-- MAIN JS FILE-->
+  <script src="js/script.js"></script>
 
 </body>
 

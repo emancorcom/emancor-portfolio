@@ -41,15 +41,18 @@ window.addEventListener('scroll', () => {
     if (!isHiding) {
       isHiding = true;
       timeoutId = setTimeout(() => {
-        header.classList.add('hidden');
-      }, 500); // Adjust the delay as needed (200ms in this example)
+        header.classList.add('hidden'); // Add the 'hidden' class
+      }, 500); // Adjust the delay as needed
     }
   } else {
     // Scrolling up
     clearTimeout(timeoutId);
-    header.classList.remove('hidden');
+    header.classList.remove('hidden'); // Remove the 'hidden' class
     isHiding = false; // Reset the flag
   }
 
   lastScrollY = currentScrollY;
 });
+
+
+
