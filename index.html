@@ -14,9 +14,6 @@
   <script src="js/three.js"></script>
   <script src="js/GLTFLoader.js"></script>
   <script src="js/OrbitControls.js"></script>
-  <script src="js/EffectComposer.js"></script>
-  <script src="js/OutlinePass.js"></script>
-  <script src="js/RenderPass.js"></script>
 
 
 
@@ -28,10 +25,9 @@
 
 <div class="filtered"></div>
 
-
 <body>
 
-  <!-- <header class="site-header">
+  <header class="site-header">
     <div class="header-container">
       <div class="buttons logo-mark">
         <a href="#hero" class="scroll button">
@@ -43,53 +39,71 @@
         </a>
       </div>
 
-      <div class="vertical-buttons">
-        <a href="#gallery" class="scroll button text-black h3">
-          GALLERY
+      <div class="buttons">
+        <a href="mailto:emmanuel@emancor.com" class="button text-black h3">
+          CONTACT
         </a>
 
-        <a href="#about" class="scroll button text-black h3">
-          ABOUT
+        <a href="resume/index.html" class="button text-black h3">
+          RESUME
         </a>
       </div>
-
     </div>
-  </header> -->
+  </header>
 
-  <section class="hero" id="hero">
+  <section class="white" id="hero">
+    <div class="container double-height full-width">
+      <div class="content-row full-width contained sticky scale-row">
 
-    <div class="container single-height full-width">
-      <div class="canvas-height">
-
-        <div class="three-wrapper"></div>
-      </div>
-
-      <div class="content-row full-width single-height contained top-space-none">
-        <div class="column align-left">
-        </div>
-
-        <div class="column align-right">
-          <div class="box contain-box bottom-space-small">
-            <h1 class="observe-me sans-serif bold text-bright-white">Emmanuel</h1>
-            <h1 class="observe-me sans-serif bold text-bright-white">Correa</h1>
-            <h1 class="observe-me sans-serif bold text-cyan">Let's Connect</h1>
+        <div class=" sticky scale-column">
+          <div>
+            <div class="text-puller"></div>
+            <div class="text-container">
+              <h1 class="observe-me sans-serif bold">Honolulu-based</h1>
+            </div>
+            <div class="text-pusher"></div>
+          </div>
+          <div class="top-space-none">
+            <div class="text-puller"></div>
+            <div class="text-container">
+              <h1 class="observe-me sans-serif bold">Graphic</h1>
+            </div>
+            <div class="text-pusher"></div>
+          </div>
+          <div>
+            <div class="text-puller"></div>
+            <div class="text-container">
+              <h1 class="observe-me sans-serif bold">and Website</h1>
+            </div>
+            <div class="text-pusher"></div>
+          </div>
+          <div>
+            <div class="text-puller"></div>
+            <div class="text-container">
+              <h1 class="observe-me sans-serif bold">Designer</h1>
+            </div>
+            <div class="text-pusher"></div>
           </div>
         </div>
-      </div>
 
+        <div class="image-scale-container">
+          <div class="three-wrapper"></div>
+        </div>
+
+
+      </div>
     </div>
   </section>
   <section class="white" id="about">
-    <div class="container full-width infront centered" id="about">
+    <div class="container full-width centered">
 
       <div class="content-row full-width contained bottom-space">
         <div class="column align-left">
           <div class="box contain-box ">
-            <h1 class="observe-me sans-serif bold">Honolulu-based</h1>
-            <h1 class="observe-me sans-serif bold">designer,</h1>
-            <h1 class="observe-me sans-serif bold">enjoy</h1>
-            <h1 class="observe-me sans-serif bold">the outdoors,</h1>
-            <h1 class="observe-me sans-serif bold">quality time</h1>
+            <h1 class="observe-me sans-serif bold">Early Passion</h1>
+            <h1 class="observe-me sans-serif bold ">for Art,</h1>
+            <h1 class="observe-me sans-serif bold">Creativity,</h1>
+            <h1 class="observe-me sans-serif bold">Nature</h1>
           </div>
         </div>
 
@@ -108,31 +122,14 @@
       </div>
 
     </div>
+
   </section>
 
   <section class="white" id="gallery">
 
-    <!-- <div class="side-bar">
-      <div class="text-verticle">
-        <h1 class="observe-me sans-serif bold text-center">GALLERY
-        </h1>
-      </div>
-    </div> -->
+    <div class="container full-width centered" id="about">
 
-    <div class="container full-width infront centered" id="about">
 
-      <div class="content-row full-width contained top-space-none">
-        <div class="column align-left">
-          <div class="box contain-box ">
-            <h1 class="observe-me sans-serif bold large-heading">GALLERY</h1>
-          </div>
-        </div>
-
-        <div class="column align-right align-base">
-          <div class="box contain-box ">
-          </div>
-        </div>
-      </div>
 
 
 
@@ -186,7 +183,7 @@
               <div>
                 <div class="text-pusher"></div>
                 <div class="text-container">
-                  <h3 class="text-center observe-me">Branding & Packaging</h3>
+                  <h3 class="text-center observe-me">Branding & Product</h3>
                 </div>
                 <div class="text-pusher"></div>
               </div>
@@ -198,55 +195,66 @@
 
 
 
-      <div class="container contained single-height full-width top-space-none content-row">
-        <div class="gallery-block">
+      <div class="content-row full-width contained top-space-none bottom-space">
+        <div class="column align-left single-height top-space-none">
           <a href="surfnsea/index.html" class="thumbnail-hover">
-
-
-
-            <div class="screen-fit-small">
+            <div class="image-container">
               <img src="img/sns-tag.webp" alt="">
             </div>
-
-
           </a>
         </div>
-        <div class="gallery-block">
+        <div class="column align-right single-height top-space-none">
           <a href="montecarlo/index.html" class="thumbnail-hover">
-
-
-
-            <div class="screen-fit-small">
-              <img src="img/terga-1.webp" alt="">
+            <div class="image-container">
+              <img src="img/mcm.webp" alt="">
             </div>
-
-
           </a>
         </div>
       </div>
+
     </div>
   </section>
 
-  <section id="more">
-    <div class="container single-height full-width">
-      <div class="content-row full-width contained top-space-none more-content">
 
-      </div>
-    </div>
-  </section>
 
-  <footer class="bg-color-4">
+  <footer class="black text-white">
 
-    <div class="content-row full-width contained top-space-none">
+    <div class="container full-width centered">
 
-      <div class="column">
-        <div class="box contain-box  text-bright-white">
-          <h2 class="text-center sans-serif bold">EMANCOR</h2>
+      <div class="content-row full-width contained bottom-space-small">
+        <div class="column align-left">
+          <div class="box contain-box ">
+            <h1 class="observe-me sans-serif bold">Honolulu-based</h1>
+            <h1 class="observe-me sans-serif bold ">Graphic</h1>
+            <h1 class="observe-me sans-serif bold">and Website</h1>
+            <h1 class="observe-me sans-serif bold">Designer</h1>
+          </div>
+        </div>
+
+        <div class="column align-right align-base">
+          <div class="row top-space-none">
+            <div class="column bottom-space-mobile">
+              <div class="box contain-box">
+                <h2 class="observe-me sans-serif bold">Contact Me</h2>
+                <div class="buttons">
+                  <a href="mailto:emmanuel@emancor.com" class="button content-b h3">emmanuel@emancor.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="column top-space-none align-top">
+              <div class="box contain-box ">
+                <h2 class="observe-me sans-serif bold">Here's My</h2>
+                <div class="buttons">
+                  <a href="resume/index.html" class="button content-b h3">Resume</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
     </div>
-
   </footer>
 
   <!-- SCROLL JS FILE-->
@@ -254,9 +262,6 @@
 
   <!-- HEADER JS FILE-->
   <script src="js/header.js"></script>
-
-  <!-- TEXT-ANI JS FILE-->
-  <script src="js/text-ani.js"></script>
 
   <!-- THREE-MAIN JS FILE-->
   <script src="js/three-main.js"></script>

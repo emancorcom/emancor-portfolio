@@ -1,4 +1,8 @@
 var scene = new THREE.Scene();
+
+// Add light blue fog to the scene
+scene.fog = new THREE.Fog(0xdbe121, 18, 27); // Light blue fog, near = 10, far = 50
+
 var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(0, 0, 20);
 
@@ -7,7 +11,9 @@ var renderer = new THREE.WebGLRenderer({
     alpha: true
 });
 
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for high-DPI screens
+renderer.shadowMap.enabled = true; // Enable shadow maps if needed
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Use a performant shadow map type
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -28,13 +34,13 @@ var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight.position.set(10, 10, 10);
 scene.add(directionalLight);
 
-// Instantiate a loader
+// Instantiate a loader for the first model
 var loader = new THREE.GLTFLoader();
 loader.load('models/emancor.glb', handle_load); // Update the path to your model
 
 var mesh;
-var targetPosition = new THREE.Vector3(-10, 0, 0); // Initial target position
-var currentPosition = new THREE.Vector3(-10, 0, 0); // Track the current position for smooth animation
+var targetPosition = new THREE.Vector3(0, .75, 0); // Initial target position
+var currentPosition = new THREE.Vector3(0, 0, 0); // Track the current position for smooth animation
 var targetScale = 1; // Target scale
 var currentScale = 1; // Current scale
 
@@ -47,9 +53,8 @@ function handle_load(gltf) {
     mesh.traverse((node) => {
         if (node.isMesh) {
             node.material = new THREE.MeshBasicMaterial({
-                color: 0x42aeab,
-                roughness: 1,
-                metalness: 0
+                color: 0xFFFFFF,
+                flatShading: true
             });
         }
     });
@@ -57,12 +62,32 @@ function handle_load(gltf) {
     scene.add(mesh);
 
     // Set initial position and scale
-    mesh.position.set(-10, 0, 0);
-    mesh.scale.set(1, 1, 1);
-
-    // Adjust model for current screen size
-    adjustModelPositionAndScale();
+    mesh.position.set(0, 0, 0);
+    mesh.scale.set(1.2, 1.2, 1.2);
 }
+
+// Load another 3D model
+var loader2 = new THREE.GLTFLoader();
+var staticMesh;
+
+loader2.load('models/scene.glb', (gltf) => {
+    staticMesh = gltf.scene;
+
+    staticMesh.traverse((node) => {
+        if (node.isMesh) {
+            node.material = new THREE.MeshBasicMaterial({
+                color: 0x59bf00,
+                flatShading: true
+            });
+        }
+    });
+
+    // Set position and scale
+    staticMesh.position.set(0, .75, 0); // Centered
+    staticMesh.scale.set(.4, .4, .4); // Same scale as the other model
+
+    scene.add(staticMesh);
+});
 
 var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
 var raycaster = new THREE.Raycaster();
@@ -76,38 +101,13 @@ function onMouseMove(event) {
     raycaster.setFromCamera(mouse, camera);
     raycaster.ray.intersectPlane(plane, pointOfIntersection);
     if (mesh) {
-        const targetQuaternion = new THREE.Quaternion();
         const lookAtPosition = new THREE.Vector3().copy(pointOfIntersection);
-        mesh.lookAt(lookAtPosition);
-        targetQuaternion.copy(mesh.quaternion);
-        mesh.quaternion.slerp(targetQuaternion, 0.1);
+        mesh.lookAt(lookAtPosition); // Directly set the rotation for instant response
     }
 }
 
 // Adjust both position and scale based on window width
-function adjustModelPositionAndScale() {
-    const screenWidth = window.innerWidth;
 
-    const initialOffset = -6.5; // Start position at 1001px
-    const stepSize = -0.5;      // Move further left with increasing width
-    const scaleStep = 0.1;
-    const maxSteps = 10;
-
-    if (screenWidth <= 1000) {
-        targetPosition.set(0, 2.25, 0); // Move up by 3 units when <= 1000px
-        targetScale = 1;
-        return;
-    }
-
-    const extraWidth = screenWidth - 1001;
-    const steps = Math.min(Math.floor(extraWidth / 100), maxSteps);
-
-    const targetX = initialOffset + steps * stepSize;
-    targetScale = 1 + steps * scaleStep;
-    targetScale = Math.min(targetScale, maxScale);
-
-    targetPosition.set(targetX, 0, 0); // Default vertical position
-}
 
 // Resize handler
 window.addEventListener("resize", () => {
@@ -131,6 +131,3 @@ renderer.setAnimationLoop(() => {
     }
     renderer.render(scene, camera);
 });
-
-// Initial adjustment
-adjustModelPositionAndScale();
