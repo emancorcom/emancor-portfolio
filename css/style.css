@@ -2024,7 +2024,7 @@ footer {
 
 footer .container {
   /* background-color: rgb(255, 0, 0); */
-  max-width: 1560px;
+  /* max-width: 1560px; */
   display: flex;
   justify-content: space-between;
 }
